@@ -8,7 +8,7 @@ jobs:
     strategy:
       matrix:
         service: [tasks-api, title-normalizer] # ${{matrix.service}}
-        python-version: [3.10, 3.11, 3.12] # ${{matrix.python-version}}
+        python-version: ["3.10", "3.11", "3.12"] # ${{matrix.python-version}}
           
     steps:
     - uses: actions/checkout@v7
