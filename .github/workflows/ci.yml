@@ -17,7 +17,6 @@ jobs:
       with:
         python-version: ${{matrix.python-version}}
     - run: pip install -r services/${{matrix.service}}/requirements.txt
-    - run: pytest services/${{matrix.service}}
     - shell: bash
       run: pytest -rA services/${{ matrix.service }} | tee ${{ matrix.service }}-test-report.txt
     - uses: actions/upload-artifact@v7
