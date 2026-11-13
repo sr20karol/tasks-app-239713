@@ -39,7 +39,7 @@ jobs:
       id-token: write
     steps:
       - name: Download Bandit Report as Artifact
-        uses: actions/checkout@v7
+        uses: actions/download-artifact@v7
         with:
           name: tasks-api-3.12-bandit-report
           path: _site # _site/tasks-api-3.12-bandit-report.html
