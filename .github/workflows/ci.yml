@@ -31,4 +31,22 @@ jobs:
       with:
         name: ${{ matrix.service }}-bandit-report
         path: ${{ matrix.service }}-bandit-report.html
-
+  deploy:
+    needs: ["run_tests"]
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    steps:
+      - name: Download Bandit Report as Artifact
+        uses: actions/checkout@v7
+        with:
+          name: tasks-api-3.12-bandit-report
+          path: _site # _site/tasks-api-3.12-bandit-report.html
+      - run: mv _site/tasks-api-3.12-bandit-report.html_site/index.html
+      - name: Upload pages artifact
+        uses: actions/upload-pages-artifact@5
+        with:
+          path: _site
+      - uses: actions/deploy-pages@5
+      
