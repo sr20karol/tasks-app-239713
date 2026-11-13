@@ -45,8 +45,8 @@ jobs:
           path: _site # _site/tasks-api-3.12-bandit-report.html
       - run: mv _site/tasks-api-3.12-bandit-report.html_site/index.html
       - name: Upload pages artifact
-        uses: actions/upload-pages-artifact@5
+        uses: actions/upload-pages-artifact@v5
         with:
           path: _site
-      - uses: actions/deploy-pages@5
+      - uses: actions/deploy-pages@v5
       
