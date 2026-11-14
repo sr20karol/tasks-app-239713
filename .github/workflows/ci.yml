@@ -71,3 +71,11 @@ jobs:
           path: _site
       - uses: actions/deploy-pages@v5
         id: deployment
+  build-images:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        service: ["tasks-api", "title-normalizer"]
+    steps:
+      - uses: actions/checkout@v7
+      - run: docker build -t ${{ matrix.service }} services/${{ matrix.service }}
